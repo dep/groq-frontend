@@ -16,4 +16,4 @@ Start it up:
 python app.py
 ```
 
-This assumes you have your GROQ_API_KEY env var set
+This assumes you have your `GROQ_API_KEY` env var set. You can get one [here](https://console.groq.com/keys)
