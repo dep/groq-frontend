@@ -1,7 +1,8 @@
 # groq-frontend
 Super lightweight frontend for groq API. Has a rudimentary memory for follow-up questions. That's about it.
 
-![CleanShot 2024-04-23 at 15 57 46](https://github.com/dep/groq-frontend/assets/55112925/928bd016-011c-4ff3-a33e-4c5549364613)
+![CleanShot 2024-04-23 at 16 03 52](https://github.com/dep/groq-frontend/assets/55112925/923fe622-7698-456f-b0d6-e6a14b90bf17)
+_Speeds above are in realtime_
 
 You may need these requirements:
 
