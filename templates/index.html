@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Language Model Query</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f5f5f5;
+      }
+      .chat-area {
+        height: calc(88vh - 140px);
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+      }
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      blockquote {
+        margin: 0;
+        padding: 10px;
+        background: #f9f9f9;
+        border-left: 3px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Groq Language Model</h1>
+      <div class="chat-area" id="chat_area">
+        {% for message in conversation %} {% if message.role == 'user' %}
+        <div><blockquote>{{ message.content }}</blockquote></div>
+        {% else %}
+        <div>{{ message.content|safe }}</div>
+        {% endif %} {% endfor %}
+      </div>
+      <form action="/" method="post" id="query-form">
+        <textarea
+          id="user_input"
+          name="user_input"
+          rows="4"
+          placeholder="Type your message here and press enter..."
+        ></textarea>
+      </form>
+    </div>
+    <script>
+      document.getElementById("user_input").focus();
+      document
+        .getElementById("query-form")
+        .addEventListener("submit", function (event) {
+          var chatArea = document.getElementById("chat_area");
+          chatArea.scrollTop = chatArea.scrollHeight;
+        });
+      document
+        .getElementById("user_input")
+        .addEventListener("keydown", function (event) {
+          if (
+            (event.metaKey && event.key === "Enter") ||
+            (event.ctrlKey && event.key === "Enter")
+          ) {
+            event.preventDefault();
+            document.getElementById("query-form").submit();
+          }
+        });
+      var chatArea = document.getElementById("chat_area");
+      chatArea.scrollTop = chatArea.scrollHeight;
+    </script>
+  </body>
+</html>
