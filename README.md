@@ -1,5 +1,5 @@
 # groq-frontend
-Super lightweight frontend for groq API
+Super lightweight frontend for groq API. Has a rudimentary memory for follow-up questions. That's about it.
 
 You may need these requirements:
 
