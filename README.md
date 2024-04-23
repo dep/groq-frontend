@@ -6,9 +6,7 @@ Super lightweight frontend for groq API. Has a rudimentary memory for follow-up 
 You may need these requirements:
 
 ```
-pip install flask
-pip install groq
-pip install markdown
+pip install flask groq markdown
 ```
 
 Start it up:
