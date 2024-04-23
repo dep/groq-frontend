@@ -1,7 +1,7 @@
 # groq-frontend
 Super lightweight frontend for groq API
 
-Install requirements:
+You may need these requirements:
 
 ```
 pip install flask
