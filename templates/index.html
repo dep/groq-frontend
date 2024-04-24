@@ -13,7 +13,7 @@
         background: #f5f5f5;
       }
       .chat-area {
-        height: calc(88vh - 140px);
+        height: calc(80vh - 140px);
         overflow-y: auto;
         border: 1px solid #ccc;
         margin-bottom: 10px;
@@ -72,19 +72,42 @@
         background: #f9f9f9;
         border-left: 3px solid #ccc;
       }
+      #assistant_prompt {
+        opacity: 0.3;
+      }
+      #reset_form button {
+        float: right;
+        background: rgb(167, 95, 107);
+        border: 1px solid #fff;
+        color: #fff;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Groq Language Model</h1>
-      <div class="chat-area" id="chat_area">
-        {% for message in conversation %} {% if message.role == 'user' %}
-        <div><blockquote>{{ message.content }}</blockquote></div>
-        {% else %}
-        <div>{{ message.content|safe }}</div>
-        {% endif %} {% endfor %}
-      </div>
+      <form action="/reset" method="post" id="reset_form">
+        <h1>
+          Groq Language Model
+          <button type="submit">Reset</button>
+        </h1>
+      </form>
       <form action="/" method="post" id="query-form">
+        <textarea
+          id="assistant_prompt"
+          name="assistant_prompt"
+          rows="4"
+          placeholder="Type the assistant prompt here...">{{ assistant_prompt }}</textarea>
+        <div class="chat-area" id="chat_area">
+          {% for message in conversation %} {% if message.role == 'user' %}
+          <div><blockquote>{{ message.content }}</blockquote></div>
+          <!-- else if -->
+          {% else %} {% if message.role == 'assistant' %}
+          <div>{{ message.content|safe }}</div>
+          {% endif %} {% endif %} {% endfor %}
+        </div>
         <textarea
           id="user_input"
           name="user_input"
